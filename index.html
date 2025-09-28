@@ -3,20 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travelling Barista - Premium Coffee Service in Bloemfontein</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Travelling Barista - Premium Coffee Anywhere</title>
     <style>
-        /* Base Styles */
-        :root {
-            --coffee-brown: #5D4037;
-            --cream: #F5F1E8;
-            --dark-brown: #3E2723;
-            --light-brown: #8D6E63;
-            --gold: #D7A449;
-            --text-dark: #333333;
-            --text-light: #F5F1E8;
-        }
-        
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -24,140 +13,163 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        body {
-            background-color: var(--cream);
-            color: var(--text-dark);
-            line-height: 1.6;
+        :root {
+            --primary: #8B4513; /* Coffee brown */
+            --secondary: #D2691E; /* Chocolate */
+            --dark: #121212;
+            --darker: #0A0A0A;
+            --light: #F5F5F5;
+            --gray: #333333;
+            --transition: all 0.3s ease;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Container */
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
         
-        section {
-            padding: 80px 0;
-        }
-        
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--coffee-brown);
-            margin-bottom: 20px;
-        }
-        
-        h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-        }
-        
-        h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-        
-        h2:after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 3px;
-            background-color: var(--gold);
-            margin: 15px auto 0;
-        }
-        
-        p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--coffee-brown);
-            color: var(--text-light);
-            padding: 12px 30px;
-            border: none;
-            border-radius: 4px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background-color: var(--dark-brown);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        /* Header Styles */
+        /* Header */
         header {
-            background-color: var(--coffee-brown);
-            color: var(--text-light);
-            padding: 20px 0;
+            background-color: var(--darker);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         
-        .header-container {
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 0;
         }
         
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
             display: flex;
             align-items: center;
         }
         
-        .logo i {
-            margin-right: 10px;
-            color: var(--gold);
+        .logo span {
+            color: var(--primary);
         }
         
-        nav ul {
+        .nav-links {
             display: flex;
             list-style: none;
         }
         
-        nav ul li {
-            margin-left: 30px;
+        .nav-links li {
+            margin-left: 1.5rem;
         }
         
-        nav ul li a {
-            color: var(--text-light);
+        .nav-links a {
+            color: var(--light);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
         }
         
-        nav ul li a:hover {
-            color: var(--gold);
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
         }
         
-        .mobile-menu {
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .hamburger {
             display: none;
-            font-size: 1.5rem;
             cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+        }
+        
+        .hamburger span {
+            height: 3px;
+            width: 100%;
+            background-color: var(--light);
+            border-radius: 10px;
+            transition: var(--transition);
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
             height: 100vh;
-            color: var(--text-light);
             display: flex;
             align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23121212"/><path d="M0,50 Q25,30 50,50 T100,50" stroke="%238B4513" stroke-width="2" fill="none"/></svg>');
+            background-size: cover;
+            background-position: center;
             text-align: center;
-            margin-top: 70px;
+            padding-top: 80px;
         }
         
         .hero-content {
@@ -166,25 +178,54 @@
         }
         
         .hero h1 {
-            color: var(--text-light);
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
         }
         
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-dark {
+            background-color: var(--darker);
         }
         
         /* About Section */
-        .about {
-            background-color: var(--cream);
-        }
-        
         .about-content {
             display: flex;
-            align-items: center;
-            gap: 50px;
+            flex-direction: column;
+            gap: 2rem;
         }
         
         .about-text {
@@ -193,177 +234,56 @@
         
         .about-image {
             flex: 1;
+            background: var(--gray);
+            height: 300px;
             border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .coffee-icon {
+            font-size: 8rem;
+            color: var(--primary);
+            opacity: 0.7;
         }
         
         /* Services Section */
-        .services {
-            background-color: var(--coffee-brown);
-            color: var(--text-light);
-        }
-        
-        .services h2 {
-            color: var(--text-light);
-        }
-        
-        .services h2:after {
-            background-color: var(--gold);
-        }
-        
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr;
+            gap: 2rem;
         }
         
         .service-card {
-            background-color: var(--dark-brown);
-            padding: 30px;
+            background-color: var(--gray);
+            padding: 2rem;
             border-radius: 10px;
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: var(--transition);
         }
         
         .service-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
         
-        .service-card i {
+        .service-icon {
             font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 20px;
+            color: var(--primary);
+            margin-bottom: 1rem;
         }
         
         .service-card h3 {
-            color: var(--text-light);
-            margin-bottom: 15px;
-        }
-        
-        /* Testimonials Section */
-        .testimonials {
-            background-color: var(--cream);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .testimonial-container {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            height: 300px;
-            overflow: hidden;
-        }
-        
-        .testimonial-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            opacity: 0;
-            transition: opacity 1s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
-        
-        .testimonial-slide.active {
-            opacity: 1;
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding: 0 30px;
-        }
-        
-        .testimonial-text:before, .testimonial-text:after {
-            content: '"';
-            font-size: 3rem;
-            color: var(--gold);
-            position: absolute;
-            opacity: 0.5;
-        }
-        
-        .testimonial-text:before {
-            top: -20px;
-            left: 0;
-        }
-        
-        .testimonial-text:after {
-            bottom: -40px;
-            right: 0;
-        }
-        
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--coffee-brown);
-        }
-        
-        .testimonial-dots {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-        }
-        
-        .dot {
-            width: 12px;
-            height: 12px;
-            background-color: var(--light-brown);
-            border-radius: 50%;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        
-        .dot.active {
-            background-color: var(--coffee-brown);
+            margin-bottom: 1rem;
         }
         
         /* Contact Section */
-        .contact {
-            background-color: var(--coffee-brown);
-            color: var(--text-light);
-        }
-        
-        .contact h2 {
-            color: var(--text-light);
-        }
-        
-        .contact h2:after {
-            background-color: var(--gold);
-        }
-        
         .contact-content {
             display: flex;
-            gap: 50px;
-        }
-        
-        .contact-info {
-            flex: 1;
-        }
-        
-        .contact-info p {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .contact-info i {
-            margin-right: 10px;
-            color: var(--gold);
-            width: 20px;
+            flex-direction: column;
+            gap: 2rem;
         }
         
         .contact-form {
@@ -371,100 +291,157 @@
         }
         
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
         }
         
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        
-        .form-group input,
-        .form-group textarea {
+        .form-control {
             width: 100%;
-            padding: 10px;
-            border: 1px solid var(--light-brown);
-            border-radius: 4px;
-            background-color: var(--dark-brown);
-            color: var(--text-light);
+            padding: 12px 15px;
+            background-color: var(--gray);
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: var(--light);
+            font-size: 1rem;
+            transition: var(--transition);
         }
         
-        .form-group textarea {
-            height: 150px;
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
             resize: vertical;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 1rem;
+            width: 30px;
         }
         
         /* Footer */
         footer {
-            background-color: var(--dark-brown);
-            color: var(--text-light);
-            padding: 40px 0 20px;
+            background-color: var(--darker);
+            padding: 3rem 0 1.5rem;
             text-align: center;
         }
         
         .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 2rem;
         }
         
         .social-links {
             display: flex;
-            gap: 15px;
+            justify-content: center;
+            margin-bottom: 2rem;
         }
         
-        .social-links a {
-            color: var(--text-light);
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--gray);
+            border-radius: 50%;
+            margin: 0 0.5rem;
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
         }
         
-        .social-links a:hover {
-            color: var(--gold);
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
         }
         
         .copyright {
-            border-top: 1px solid var(--light-brown);
-            padding-top: 20px;
             font-size: 0.9rem;
-            opacity: 0.8;
+            color: #888;
         }
         
-        /* Responsive Styles */
-        @media (max-width: 768px) {
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .about-content,
+            .contact-content {
+                flex-direction: row;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
             h1 {
+                font-size: 3.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 70%;
+                height: calc(100vh - 70px);
+                background-color: var(--darker);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 2rem;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+            
+            .hero h1 {
                 font-size: 2.5rem;
-            }
-            
-            h2 {
-                font-size: 2rem;
-            }
-            
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul {
-                margin-top: 20px;
-                flex-direction: column;
-            }
-            
-            nav ul li {
-                margin: 10px 0;
-            }
-            
-            .about-content, .contact-content {
-                flex-direction: column;
-            }
-            
-            .hero {
-                height: 80vh;
-            }
-            
-            .testimonial-container {
-                height: 350px;
             }
         }
     </style>
@@ -472,149 +449,120 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="container header-container">
-            <div class="logo">
-                <i class="fas fa-coffee"></i>
-                <span>Travelling Barista</span>
-            </div>
-            <nav>
-                <ul>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Travelling <span>Barista</span></a>
+                <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </nav>
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
-            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Premium Coffee Experiences in Bloemfontein</h1>
-            <p>Bringing the authentic coffee shop experience to your events, meetings, and special occasions.</p>
-            <a href="#contact" class="btn">Book Our Service</a>
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Premium Coffee Experience, Wherever You Are</h1>
+                <p>Travelling Barista brings the art of specialty coffee directly to your events, offices, and special occasions. Experience barista-crafted beverages with the convenience of mobility.</p>
+                <a href="#contact" class="btn">Book Your Barista</a>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about">
+    <section id="about" class="section-dark">
         <div class="container">
-            <h2>Our Story</h2>
+            <h2>About Us</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Founded in the heart of Bloemfontein, Travelling Barista brings the warmth and aroma of specialty coffee directly to your events. Our passionate baristas are dedicated to crafting the perfect cup of coffee, tailored to your preferences.</p>
-                    <p>Whether it's a corporate meeting, wedding celebration, or private party, we transform any venue into an inviting coffee haven with our rustic mobile coffee station and expert service.</p>
-                    <p>We source our beans from ethical suppliers and roast them to perfection, ensuring every sip delivers the rich, complex flavors that coffee lovers crave.</p>
-                    <a href="#contact" class="btn">Learn More</a>
+                    <p>Founded with a passion for exceptional coffee and unparalleled service, Travelling Barista is your mobile coffee solution for any occasion. Our skilled baristas are trained in the art of coffee preparation, ensuring every cup is a masterpiece.</p>
+                    <p>We bring our fully-equipped mobile coffee station to your location, serving a variety of specialty drinks made with ethically sourced beans and premium ingredients.</p>
+                    <p>Whether it's a corporate event, wedding, private party, or office gathering, we elevate your experience with the perfect cup of coffee.</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Barista preparing coffee">
+                    <div class="coffee-icon">☕</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="services" id="services">
+    <section id="services">
         <div class="container">
             <h2>Our Services</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <i class="fas fa-briefcase"></i>
+                    <div class="service-icon">🏢</div>
                     <h3>Corporate Events</h3>
-                    <p>Keep your team energized with premium coffee service during meetings, conferences, and corporate gatherings.</p>
+                    <p>Boost productivity and morale with premium coffee service for your office meetings, conferences, and corporate events.</p>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-glass-cheers"></i>
-                    <h3>Weddings & Celebrations</h3>
-                    <p>Add a touch of elegance to your special day with our barista station serving artisanal coffee creations.</p>
+                    <div class="service-icon">💒</div>
+                    <h3>Weddings & Special Occasions</h3>
+                    <p>Add a touch of elegance to your special day with our mobile barista service, creating memorable experiences for your guests.</p>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-calendar-alt"></i>
+                    <div class="service-icon">🎉</div>
                     <h3>Private Parties</h3>
-                    <p>Elevate your gatherings with our mobile coffee bar, perfect for birthdays, anniversaries, and social events.</p>
+                    <p>Elevate your gatherings with professionally crafted coffee beverages that impress your guests and create lasting memories.</p>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-store"></i>
-                    <h3>Pop-Up Cafés</h3>
-                    <p>Create a temporary coffee shop experience for festivals, markets, or special promotions.</p>
+                    <div class="service-icon">📅</div>
+                    <h3>Regular Office Service</h3>
+                    <p>Set up a recurring coffee service for your workplace, ensuring your team always has access to exceptional coffee.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <h2>What Our Clients Say</h2>
-            <div class="testimonial-container">
-                <div class="testimonial-slide active">
-                    <p class="testimonial-text">The Travelling Barista team transformed our corporate retreat with their exceptional coffee service. The attention to detail and friendly baristas made everyone feel special.</p>
-                    <p class="testimonial-author">- Sarah Johnson, Tech Solutions Inc.</p>
-                </div>
-                <div class="testimonial-slide">
-                    <p class="testimonial-text">Our wedding wouldn't have been complete without the coffee station. Guests are still talking about the delicious cappuccinos and lattes months later!</p>
-                    <p class="testimonial-author">- Michael & Emily Roberts</p>
-                </div>
-                <div class="testimonial-slide">
-                    <p class="testimonial-text">As event planners, we've worked with many vendors, but Travelling Barista stands out for their professionalism and consistently excellent service.</p>
-                    <p class="testimonial-author">- David Chen, Event Masters</p>
-                </div>
-                <div class="testimonial-slide">
-                    <p class="testimonial-text">The pop-up café at our festival was a huge hit! The rustic setup and quality coffee drew crowds all weekend long. Highly recommended!</p>
-                    <p class="testimonial-author">- Lisa van der Merwe, Arts Festival Director</p>
-                </div>
-            </div>
-            <div class="testimonial-dots">
-                <span class="dot active" data-slide="0"></span>
-                <span class="dot" data-slide="1"></span>
-                <span class="dot" data-slide="2"></span>
-                <span class="dot" data-slide="3"></span>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section id="contact" class="section-dark">
         <div class="container">
-            <h2>Get in Touch</h2>
+            <h2>Contact Us</h2>
             <div class="contact-content">
-                <div class="contact-info">
-                    <p><i class="fas fa-map-marker-alt"></i> Based in Bloemfontein, Free State</p>
-                    <p><i class="fas fa-phone"></i> +27 51 123 4567</p>
-                    <p><i class="fas fa-envelope"></i> info@travellingbarista.co.za</p>
-                    <p><i class="fas fa-clock"></i> Available for events 7 days a week</p>
-                    <p>Ready to bring exceptional coffee to your next event? Contact us for a personalized quote and let's discuss how we can make your occasion memorable with premium coffee service.</p>
-                </div>
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" class="form-control" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" class="form-control" placeholder="Your Email" required>
                         </div>
                         <div class="form-group">
-                            <label for="event">Event Type</label>
-                            <input type="text" id="event" name="event" required>
+                            <input type="text" class="form-control" placeholder="Subject">
                         </div>
                         <div class="form-group">
-                            <label for="date">Event Date</label>
-                            <input type="date" id="date" name="date" required>
+                            <textarea class="form-control" placeholder="Your Message" required></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="message">Additional Details</label>
-                            <textarea id="message" name="message"></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Inquiry</button>
+                        <button type="submit" class="btn">Send Message</button>
                     </form>
+                </div>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <p>123 Coffee Lane, Brew City, BC 12345</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">📞</div>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">✉️</div>
+                        <p>hello@travellingbarista.com</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">🕒</div>
+                        <p>Monday - Sunday: 7:00 AM - 10:00 PM</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -624,85 +572,42 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="logo">
-                    <i class="fas fa-coffee"></i>
-                    <span>Travelling Barista</span>
-                </div>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                </div>
+                <a href="#" class="logo">Travelling <span>Barista</span></a>
+                <p>Bringing exceptional coffee experiences to your doorstep</p>
             </div>
-            <div class="copyright">
-                <p>&copy; 2023 Travelling Barista. All rights reserved. | Premium coffee service in Bloemfontein and surrounding areas.</p>
+            <div class="social-links">
+                <a href="#" class="social-link">f</a>
+                <a href="#" class="social-link">in</a>
+                <a href="#" class="social-link">ig</a>
+                <a href="#" class="social-link">tw</a>
             </div>
+            <p class="copyright">&copy; 2023 Travelling Barista. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Testimonial Slider Functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const slides = document.querySelectorAll('.testimonial-slide');
-            const dots = document.querySelectorAll('.dot');
-            let currentSlide = 0;
-            
-            function showSlide(n) {
-                slides.forEach(slide => slide.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
-                
-                currentSlide = (n + slides.length) % slides.length;
-                
-                slides[currentSlide].classList.add('active');
-                dots[currentSlide].classList.add('active');
-            }
-            
-            // Auto-advance slides every 5 seconds
-            setInterval(() => {
-                showSlide(currentSlide + 1);
-            }, 5000);
-            
-            // Dot click events
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    showSlide(index);
-                });
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
             });
-            
-            // Mobile menu toggle
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const nav = document.querySelector('nav ul');
-            
-            mobileMenu.addEventListener('click', () => {
-                nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-            });
-            
-            // Form submission
-            const contactForm = document.getElementById('contactForm');
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you for your inquiry! We will get back to you soon.');
-                contactForm.reset();
-            });
-            
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('nav a').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    
-                    window.scrollTo({
-                        top: targetSection.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (window.innerWidth <= 768) {
-                        nav.style.display = 'none';
-                    }
-                });
-            });
+        });
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
         });
     </script>
 </body>
